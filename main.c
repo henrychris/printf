@@ -2,10 +2,12 @@
 #include <stdarg.h>
 
 /**
-  *
-  *
-  *
-  */
+ * _printf - prints anything
+ * @format: list of types of arguments
+ * passed to the function
+ * @...: arguments to be printed
+ * Return: void
+*/
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -43,18 +45,17 @@ int _printf(const char *format, ...)
 }
 
 /**
-  * print_char: prints a char to stdout
+  * print_char - prints a char to stdout
   * @args: a variable list of arguments
   * to be increased after printing a character
   * Return: void
   */
 void print_char(va_list args)
 {
-	
 }
 
 /**
-  * print_str: prints a string to stdout
+  * print_str - prints a string to stdout
   * @args: a variable list of arguments
   * @count_ptr: a pointer to the character count
   * to be increased after printing a character
