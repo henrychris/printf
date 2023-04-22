@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
+#include "main.h"
 
 /**
  * _printf - prints anything
@@ -7,7 +8,7 @@
  * passed to the function
  * @...: arguments to be printed
  * Return: void
-*/
+ */
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -19,7 +20,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			/* check if the next char is format specifier*/
+			/* check if the next char is format specifier */
 			switch (format[i + 1])
 			{
 			case 'c':
@@ -37,14 +38,14 @@ int _printf(const char *format, ...)
 				write(1, &format[i], 1);
 				count++;
 				break;
-				default:
-					return (count);
+			default:
+				return (count);
 			}
 		}
 		else
 		{
 			/* write the char to stdout */
-			write(1, format[i], 1);
+			write(1, &format[i], 1);
 			count++;
 		}
 	}
@@ -52,22 +53,22 @@ int _printf(const char *format, ...)
 }
 
 /**
-  * print_char - prints a char to stdout
-  * @args: a variable list of arguments
-  * to be increased after printing a character
-  * Return: void
-  */
+ * print_char - prints a char to stdout
+ * @args: a variable list of arguments
+ * to be increased after printing a character
+ * Return: void
+ */
 void print_char(va_list args)
 {
 }
 
 /**
-  * print_str - prints a string to stdout
-  * @args: a variable list of arguments
-  * @count_ptr: a pointer to the character count
-  * to be increased after printing a character
-  * Return: void
-  */
+ * print_str - prints a string to stdout
+ * @args: a variable list of arguments
+ * @count_ptr: a pointer to the character count
+ * to be increased after printing a character
+ * Return: void
+ */
 void print_str(va_list args, int *count_ptr)
 {
 }
