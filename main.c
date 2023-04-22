@@ -32,7 +32,8 @@ int _printf(const char *format, ...)
 				print_str(args, count_ptr);
 				break;
 			case '%':
-				/* in this scenario it would be %%,
+				/*
+				 * in this scenario it would be %%,
 				 * which is how you escape and print a % sign
 				 */
 				write(1, &format[i], 1);
