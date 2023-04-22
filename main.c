@@ -72,3 +72,9 @@ void print_str(va_list args, int *count_ptr)
 {
 
 }
+
+int main(void)
+{
+	_printf("Hi");
+	return (0);
+}
