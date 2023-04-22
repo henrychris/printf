@@ -22,14 +22,21 @@ int _printf(const char *format, ...)
 			/* check if the next char is format specifier*/
 			switch (format[i + 1])
 			{
-				case 'c':
-					print_char(args);
-					count++;
-					break;
-				case 's':
-					/* use ptr for count */
-					print_str(args, count_ptr);
-					break;
+			case 'c':
+				print_char(args);
+				count++;
+				break;
+			case 's':
+				/* use ptr for count */
+				print_str(args, count_ptr);
+				break;
+			case '%':
+				/* in this scenario it would be %%,
+				 * which is how you escape and print a % sign
+				 */
+				write(1, &format[i], 1);
+				count++;
+				break;
 				default:
 					return (count);
 			}
