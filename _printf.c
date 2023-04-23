@@ -52,8 +52,7 @@ int _printf(const char *format, ...)
 
 /**
  * print_char - prints a char to stdout
- * @args: a variable list of arguments
- * to be increased after printing a character
+ * @c: the char to be printed
  * Return: void
  */
 void print_char(int c)
@@ -63,7 +62,7 @@ void print_char(int c)
 
 /**
  * print_str - prints a string to stdout
- * @args: a variable list of arguments
+ * @str: the string to be printed
  * @count_ptr: a pointer to the character count
  * to be increased after printing a character
  * Return: void
@@ -82,7 +81,7 @@ void print_str(char *str, int *count_ptr)
 
 /**
  * print_int - prints an integer to stdout
- * @args: a variable list of arguments
+ * @num: the integer to be printed
  * @count_ptr: a pointer to the character count
  * to be increased after printing a character
  * Return: void
