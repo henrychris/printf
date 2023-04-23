@@ -13,6 +13,8 @@ int _printf(const char *format, ...)
 	int count = 0, i;
 	int *count_ptr = &count;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -39,6 +41,10 @@ int _printf(const char *format, ...)
 			break;
 		case 'i':
 			print_int(va_arg(args, int), count_ptr);
+			i++;
+			break;
+		case 'b':
+			print_binary(va_arg(args, int), count_ptr);
 			i++;
 			break;
 		default:
@@ -70,6 +76,8 @@ void print_str(char *str, int *count_ptr)
 {
 	int j = 0;
 
+	if (str == NULL)
+		str = "(null)";
 	while (str[j] != '\0')
 	{
 		write(1, str + j, 1);
@@ -145,4 +153,46 @@ void convert_num_to_str(int num, char *str)
 		str[0] = 0 + '0';
 		str[1] = '\0';
 	}
+}
+/**
+  * conv_binary - conv numbers to binary string
+  * @num: number
+  * @s1: string pointer that takes the binary string but in reverse
+  * @s2: string poniter that takes the binary string
+  */
+void conv_binary(int num, char *s1, char *s2)
+{
+	int i = 0, j = 0;
+
+	if (num == 0)
+	{
+		s2[0] = 0 + '0';
+		s2[1] = '\0';
+	} else
+	{
+		while (num != 0)
+		{
+			s1[i] = (num % 2) + '0';
+			num /= 2;
+			i++;
+		}
+		for (j = 0; j < i; j++)
+		{
+			s2[j] = s1[i - 1 - j];
+		}
+		s2[j] = '\0';
+	}
+}
+/**
+  * print_binary - printf the binary string
+  * @num: number
+  * @count_ptr: count pointer
+  */
+void print_binary(int num, int *count_ptr)
+{
+	char s1[32];
+	char s2[32];
+
+	conv_binary(num, s1, s2);
+	print_str(s2, count_ptr);
 }
