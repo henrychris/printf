@@ -81,7 +81,7 @@ void print_str(char *str, int *count_ptr)
 	int j = 0;
 
 	if (str == NULL)
-		str = "(nil)";
+		str = "(null)";
 	while (str[j] != '\0')
 	{
 		write(1, str + j, 1);
