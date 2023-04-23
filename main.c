@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
-#include <stdlib.h>
-#include <limits.h>
 
 /**
  * _printf - prints anything
@@ -21,48 +17,37 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			/* check if the next char is format specifier */
-			switch (format[i + 1])
-			{
-			case 'c':
-				print_char(args);
-				count++;
-				break;
-			case 's':
-				/* use ptr for count */
-				/* Review: replace va_list arg with
-				   str pointer to simplify tasks */
-				str = va_arg(args, char *);
-				print_str(str, count_ptr);
-				break;
-			case '%':
-				/*
-				 * in this scenario it would be %%,
-				 * which is how you escape and print a % sign
-				 */
-				write(1, &format[i], 1);
-				count++;
-				break;
-			case 'i':
-				/* use str pointer and alocate 11 bytes
-				 because INT_MIN = -2,147,483,647 with '\0'
-				 and '-' the maximum size is 12*/
-				str = malloc(12 * sizeof(char));
-				convert_num_str(va_arg(args, int), str);
-				print_str(str, count_ptr);
-				free(str);
-				break;
-			default:
-				return (count);
-			}
-		}
-		else
-		{
-			/* write the char to stdout */
 			write(1, &format[i], 1);
 			count++;
+			continue;
+		}
+		/* check if the next char is format specifier */
+		switch (format[i + 1])
+		{
+		case 'c':
+			print_char(va_arg(args, int));
+			/**
+			 * i++ is uaed to skip the format specifier
+			 * and print the next char
+			 */
+			i++, count++;
+			break;
+		case 's':
+			print_str(va_arg(args, char *), count_ptr);
+			i++;
+			break;
+		case '%':
+			write(1, &format[i], 1);
+			i++, count++;
+			break;
+		case 'i':
+			print_int(va_arg(args, int), count_ptr);
+			i++;
+			break;
+		default:
+			return (-1);
 		}
 	}
 	va_end(args);
@@ -75,10 +60,8 @@ int _printf(const char *format, ...)
  * to be increased after printing a character
  * Return: void
  */
-void print_char(va_list args)
+void print_char(int c)
 {
-	int c = va_arg(args, int);
-
 	write(1, &c, 1);
 }
 
@@ -102,12 +85,37 @@ void print_str(char *str, int *count_ptr)
 }
 
 /**
+ * print_int - prints an integer to stdout
+ * @args: a variable list of arguments
+ * @count_ptr: a pointer to the character count
+ * to be increased after printing a character
+ * Return: void
+ */
+void print_int(int num, int *count_ptr)
+{
+	/*
+	 * use str pointer and alocate 11 bytes
+	 * because INT_MIN = -2,147,483,647 with '\0'
+	 * and '-' the maximum size is 12
+	 */
+	/**
+	 * TODO
+	 * allocate memory for string here, and return pointer
+	 * to the string
+	 * use the number of digits to allocate memory
+	 * @Adam
+	 */
+	char str[12];
+	convert_num_to_str(num, str);
+	print_str(str, count_ptr);
+}
+/**
  * convert_num_to_str - converts a number to a string
  * @num: the number to be converted
  * @str: the string to store the converted number
  * Return: nothing
  */
-void convert_num_str(int num, char *str)
+void convert_num_to_str(int num, char *str)
 {
 	int i, rem, len = 0, n, a = 0;
 
@@ -133,18 +141,13 @@ void convert_num_str(int num, char *str)
 			str[len - (i + 1)] = rem + '0';
 		}
 		str[len] = '\0';
-		if (a == 1)		
+		if (a == 1)
 			str[0] = '-';
-	} else
+	}
+	else if (num == 0)
 	{
 		/* Review: add condition for 0 */
 		str[0] = 0 + '0';
 		str[1] = '\0';
 	}
-}
-
-int main(void)
-{
-	_printf("Hi %s %s %c %% %i %i %i %i %i", "Hello", "My", 'A', 0, 3, -8439392, INT_MAX, -2147483647);
-	return (0);
 }
