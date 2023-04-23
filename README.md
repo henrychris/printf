@@ -1,3 +1,3 @@
 # printf
--Specifiers s and c is done.
--Specifier i is on reviewing.
+-Specifiers s and c are on reviewing.
+-Specifier i and d are on reviewing.
