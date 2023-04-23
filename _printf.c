@@ -43,6 +43,10 @@ int _printf(const char *format, ...)
 			print_int(va_arg(args, int), count_ptr);
 			i++;
 			break;
+		case 'd':
+			print_int(va_arg(args, int), count_ptr);
+			i++;
+			break;
 		case 'b':
 			print_binary(va_arg(args, int), count_ptr);
 			i++;
