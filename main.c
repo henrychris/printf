@@ -1,6 +1,8 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
+#include <stdlib.h>
+#include <limits.h>
 
 /**
  * _printf - prints anything
@@ -14,6 +16,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0, i;
 	int *count_ptr = &count;
+	char *str;
 
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -29,7 +32,10 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				/* use ptr for count */
-				print_str(args, count_ptr);
+				/* Review: replace va_list arg with
+				   str pointer to simplify tasks */
+				str = va_arg(args, char *);
+				print_str(str, count_ptr);
 				break;
 			case '%':
 				/*
@@ -38,6 +44,15 @@ int _printf(const char *format, ...)
 				 */
 				write(1, &format[i], 1);
 				count++;
+				break;
+			case 'i':
+				/* use str pointer and alocate 11 bytes
+				 because INT_MIN = -2,147,483,647 with '\0'
+				 and '-' the maximum size is 12*/
+				str = malloc(12 * sizeof(char));
+				convert_num_str(va_arg(args, int), str);
+				print_str(str, count_ptr);
+				free(str);
 				break;
 			default:
 				return (count);
@@ -50,6 +65,7 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
+	va_end(args);
 	return (count);
 }
 
@@ -61,6 +77,9 @@ int _printf(const char *format, ...)
  */
 void print_char(va_list args)
 {
+	int c = va_arg(args, int);
+
+	write(1, &c, 1);
 }
 
 /**
@@ -70,8 +89,16 @@ void print_char(va_list args)
  * to be increased after printing a character
  * Return: void
  */
-void print_str(va_list args, int *count_ptr)
+void print_str(char *str, int *count_ptr)
 {
+	int j = 0;
+
+	while (str[j] != '\0')
+	{
+		write(1, str + j, 1);
+		j++;
+		*count_ptr = *count_ptr + 1;
+	}
 }
 
 /**
@@ -80,27 +107,44 @@ void print_str(va_list args, int *count_ptr)
  * @str: the string to store the converted number
  * Return: nothing
  */
-void convert_num_to_str(int num, char *str)
+void convert_num_str(int num, char *str)
 {
-	int i, rem, len = 0, n;
+	int i, rem, len = 0, n, a = 0;
 
-	n = num;
-	while (n != 0)
+	if (num != 0)
 	{
-		len++;
-		n /= 10;
-	}
-	for (i = 0; i < len; i++)
+		if (num < 0)
+		{
+			/* Review: add negative numbers */
+			len++;
+			num = -num;
+			a++;
+		}
+		n = num;
+		while (n != 0)
+		{
+			len++;
+			n /= 10;
+		}
+		for (i = 0; i < len; i++)
+		{
+			rem = num % 10;
+			num = num / 10;
+			str[len - (i + 1)] = rem + '0';
+		}
+		str[len] = '\0';
+		if (a == 1)		
+			str[0] = '-';
+	} else
 	{
-		rem = num % 10;
-		num = num / 10;
-		str[len - (i + 1)] = rem + '0';
+		/* Review: add condition for 0 */
+		str[0] = 0 + '0';
+		str[1] = '\0';
 	}
-	str[len] = '\0';
 }
 
 int main(void)
 {
-	_printf("Hi");
+	_printf("Hi %s %s %c %% %i %i %i %i %i", "Hello", "My", 'A', 0, 3, -8439392, INT_MAX, -2147483647);
 	return (0);
 }
