@@ -28,10 +28,6 @@ int _printf(const char *format, ...)
 		{
 		case 'c':
 			print_char(va_arg(args, int));
-			/**
-			 * i++ is uaed to skip the format specifier
-			 * and print the next char
-			 */
 			i++, count++;
 			break;
 		case 's':
@@ -106,6 +102,7 @@ void print_int(int num, int *count_ptr)
 	 * @Adam
 	 */
 	char str[12];
+
 	convert_num_to_str(num, str);
 	print_str(str, count_ptr);
 }
