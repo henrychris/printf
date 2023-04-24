@@ -56,16 +56,5 @@ int main(void)
 	_printf("Binary 2: %b\n", num4);
 
 #pragma endregion test - suite
-
-	// printf("\n%u", (MAX_LEN_UNSIGNED - 6));
-	// _printf("%b", -1);
-
-	// write a test for conv_binary
-	// char s1[32];
-	// char *s2;
-
-	// s2 = conv_binary(10);
-	// printf("%s\n", s2);
-
 	return (0);
 }
