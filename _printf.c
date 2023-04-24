@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0, i, *count_ptr = &count;
 
-	if (format == NULL)
+	if (!format)
 		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -36,7 +36,8 @@ int _printf(const char *format, ...)
 			write(1, &format[i], 1);
 			count++;
 			break;
-		case 'i' || 'd':
+		case 'i':
+		case 'd':
 			print_int(va_arg(args, int), count_ptr);
 			break;
 		case 'b':
