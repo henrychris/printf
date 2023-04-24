@@ -8,8 +8,8 @@
  * Return: void
  */
 #define COUNTC do { \
-	count += print_char(va_arg(args, int)); \
-	break; \
+	(count) += (print_char((va_arg((args), (int))))); \
+	(break); \
 } while (0)
 int _printf(const char *format, ...)
 {
