@@ -65,7 +65,7 @@ char *convert_ui_to_str(unsigned int num)
  */
 int print_S(char *str)
 {
-	int j = 0;
+	int j = 0, a = 0;
 
 	if (str == NULL)
 		str = "(null)";
@@ -77,12 +77,12 @@ int print_S(char *str)
 			print_char('x');
 			/* conv_to_hexadecimal */
 			/* print_it */
-			j += 4;
+			a += 4;
 		} else
 		{
 			print_char(str[j]);
 			j++;
 		}
 	}
-	return (j);
+	return (j + a);
 }
