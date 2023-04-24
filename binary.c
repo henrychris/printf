@@ -33,7 +33,7 @@ void conv_binary(int num, char *s1, char *s2)
 /**
  * print_binary - printf the binary string
  * @num: number
- * @count_ptr: count pointer
+ * Return: num of chars printed
  */
 int print_binary(int num)
 {
@@ -41,5 +41,5 @@ int print_binary(int num)
 	char s2[32];
 
 	conv_binary(num, s1, s2);
-	return print_str(s2);
+	return (print_str(s2));
 }
