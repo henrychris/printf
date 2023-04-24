@@ -46,5 +46,8 @@ int main(void)
 	
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
+
+	_printf("INT_MIN: %d\n", INT_MIN);
+	printf("INT_MIN: %d\n", INT_MIN);
 	return (0);
 }

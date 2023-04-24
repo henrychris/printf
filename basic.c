@@ -40,7 +40,7 @@ int print_int(int num)
 {
 	char *str;
 
-	if (num != -2147483648)
+	if (num != INT_MIN)
 	{
 		str = convert_num_to_str(num);
 	} else
