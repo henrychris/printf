@@ -13,4 +13,4 @@ void convert_num_to_str(int num, char *str);
 void conv_binary(int num, char *s1, char *s2);
 void print_binary(int num, int *count_ptr);
 
-#endif
+#endif /* MAIN_H */
