@@ -10,7 +10,7 @@ int print_char(int c);
 int print_str(char *str);
 int print_int(int num);
 char *convert_num_to_str(int num);
-void conv_binary(int num, char *s1, char *s2);
+char* conv_binary(int num);
 int print_binary(int num);
 
 #endif /* MAIN_H */
