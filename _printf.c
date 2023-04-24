@@ -10,36 +10,33 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0, i, *count_ptr = &count;
+	int count = 0, i;
 
 	va_start(args, format);
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			write(1, &format[i], 1);
-			count++;
+			count += print_char(format[i]);
 			continue;
 		}
 		switch (format[i + 1])
 		{
 		case 'c':
-			print_char(va_arg(args, int));
-			count++;
+			count += print_char(va_arg(args, int));
 			break;
 		case 's':
-			print_str(va_arg(args, char *), count_ptr);
+			count += print_str(va_arg(args, char *));
 			break;
 		case '%':
-			write(1, &format[i], 1);
-			count++;
+			count += print_char('%');
 			break;
 		case 'i':
 		case 'd':
-			print_int(va_arg(args, int), count_ptr);
+			count += print_int(va_arg(args, int));
 			break;
 		case 'b':
-			print_binary(va_arg(args, int), count_ptr);
+			count += print_binary(va_arg(args, int));
 			break;
 		default:
 			return (-1);

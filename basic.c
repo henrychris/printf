@@ -5,9 +5,9 @@
  * @c: the char to be printed
  * Return: void
  */
-void print_char(int c)
+int print_char(int c)
 {
-	write(1, &c, 1);
+	return write(1, &c, 1);
 }
 
 /**
@@ -17,7 +17,7 @@ void print_char(int c)
  * to be increased after printing a character
  * Return: void
  */
-void print_str(char *str, int *count_ptr)
+int print_str(char *str)
 {
 	int j = 0;
 
@@ -25,10 +25,10 @@ void print_str(char *str, int *count_ptr)
 		str = "(null)";
 	while (str[j] != '\0')
 	{
-		write(1, str + j, 1);
+		print_char(str[j]);
 		j++;
-		*count_ptr = *count_ptr + 1;
 	}
+	return (j);
 }
 
 /**
@@ -38,7 +38,7 @@ void print_str(char *str, int *count_ptr)
  * to be increased after printing a character
  * Return: void
  */
-void print_int(int num, int *count_ptr)
+int print_int(int num)
 {
 	/*
 	 * use str pointer and alocate 11 bytes
@@ -52,10 +52,10 @@ void print_int(int num, int *count_ptr)
 	 * use the number of digits to allocate memory
 	 * @Adam
 	 */
-	char str[12];
+	char *str;
 
-	convert_num_to_str(num, str);
-	print_str(str, count_ptr);
+	str = convert_num_to_str(num);
+	return (print_str(str));
 }
 /**
  * convert_num_to_str - converts a number to a string
@@ -63,25 +63,27 @@ void print_int(int num, int *count_ptr)
  * @str: the string to store the converted number
  * Return: nothing
  */
-void convert_num_to_str(int num, char *str)
+char *convert_num_to_str(int num)
 {
-	int i, rem, len = 0, n, a = 0;
+	int i, rem, len = 0, digits = num, a = 0;
+	char *str;
 
 	if (num != 0)
 	{
 		if (num < 0)
 		{
-			/* Review: add negative numbers */
 			len++;
 			num = -num;
 			a++;
 		}
-		n = num;
-		while (n != 0)
+		while (digits != 0)
 		{
 			len++;
-			n /= 10;
+			digits /= 10;
 		}
+		str = malloc((digits + 1) * sizeof(char));
+		if (str == NULL)
+			return (NULL);
 		for (i = 0; i < len; i++)
 		{
 			rem = num % 10;
@@ -94,8 +96,11 @@ void convert_num_to_str(int num, char *str)
 	}
 	else if (num == 0)
 	{
-		/* Review: add condition for 0 */
+		str = malloc(2 * sizeof(char));
+		if (str == NULL)
+			return (NULL);
 		str[0] = 0 + '0';
 		str[1] = '\0';
 	}
+	return (str);
 }

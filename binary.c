@@ -35,11 +35,11 @@ void conv_binary(int num, char *s1, char *s2)
  * @num: number
  * @count_ptr: count pointer
  */
-void print_binary(int num, int *count_ptr)
+int print_binary(int num)
 {
 	char s1[32];
 	char s2[32];
 
 	conv_binary(num, s1, s2);
-	print_str(s2, count_ptr);
+	return print_str(s2);
 }
