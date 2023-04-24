@@ -3,43 +3,49 @@
 /**
  * conv_binary - conv numbers to binary string
  * @num: number
- * @s1: string pointer that takes the binary string but in reverse
- * @s2: string poniter that takes the binary string
+ * @rev_bstr: string pointer that takes the binary string but in reverse
+ * Return: binary num as string
  */
-void conv_binary(int num, char *s1, char *s2)
+char *conv_binary(unsigned int num)
 {
 	int i = 0, j = 0;
+	char *bstr, rev_bstr[32];
 
 	if (num == 0)
 	{
-		s2[0] = 0 + '0';
-		s2[1] = '\0';
+		bstr[0] = 0 + '0';
+		bstr[1] = '\0';
 	}
 	else
 	{
 		while (num != 0)
 		{
-			s1[i] = (num % 2) + '0';
+			rev_bstr[i] = (num % 2) + '0';
 			num /= 2;
 			i++;
 		}
+
+		bstr = malloc(sizeof(char) * (i + 1));
+		if (bstr == NULL)
+			return NULL;
 		for (j = 0; j < i; j++)
 		{
-			s2[j] = s1[i - 1 - j];
+			bstr[j] = rev_bstr[i - 1 - j];
 		}
-		s2[j] = '\0';
+		bstr[j] = '\0';
 	}
+	return (bstr);
 }
 /**
  * print_binary - printf the binary string
  * @num: number
  * Return: num of chars printed
  */
-int print_binary(int num)
+int print_binary(unsigned int num)
 {
 	char s1[32];
-	char s2[32];
+	char *s2;
 
-	conv_binary(num, s1, s2);
+	s2 = conv_binary(num);
 	return (print_str(s2));
 }

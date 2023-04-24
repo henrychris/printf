@@ -10,7 +10,9 @@ int print_char(int c);
 int print_str(char *str);
 int print_int(int num);
 char *convert_num_to_str(int num);
-void conv_binary(int num, char *s1, char *s2);
-int print_binary(int num);
+char *conv_binary(unsigned int num);
+int print_binary(unsigned int num);
+int print_unsigned(unsigned int num);
+char *convert_ui_to_str(unsigned int num);
 
 #endif /* MAIN_H */

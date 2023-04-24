@@ -6,7 +6,9 @@
  */
 int main(void)
 {
+#pragma region test -suite
 	int len, len1, len2, len_int;
+	unsigned int num3 = 4294967295, num4 = 987654321;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
@@ -41,13 +43,18 @@ int main(void)
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
 
-	_printf("Wrong: %c\n", 'A');
-	printf("Wrong: %c\n", 'A');
-	
+	_printf("Wrong: %c\n");
+	printf("Wrong: %c\n");
+
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
 
-	_printf("INT_MIN: %d\n", INT_MIN);
-	printf("INT_MIN: %d\n", INT_MIN);
+	_printf("Unsigned 1: %u\n", num3);
+	_printf("Unsigned 2: %u\n", num4);
+
+	_printf("Binary 1: %b\n", num3);
+	_printf("Binary 2: %b\n", num4);
+
+#pragma endregion test - suite
 	return (0);
 }

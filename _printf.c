@@ -25,18 +25,21 @@ int _printf(const char *format, ...)
 		case 'c':
 			count += print_char(va_arg(args, int));
 			break;
-		case 's':
-			count += print_str(va_arg(args, char *));
-			break;
 		case '%':
 			count += print_char('%');
+			break;
+		case 's':
+			count += print_str(va_arg(args, char *));
 			break;
 		case 'i':
 		case 'd':
 			count += print_int(va_arg(args, int));
 			break;
+		case 'u':
+			count += print_unsigned(va_arg(args, unsigned int));
+			break;
 		case 'b':
-			count += print_binary(va_arg(args, int));
+			count += print_binary(va_arg(args, unsigned int));
 			break;
 		default:
 			return (-1);
