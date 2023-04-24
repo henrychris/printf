@@ -14,5 +14,6 @@ char *conv_binary(unsigned int num);
 int print_binary(unsigned int num);
 int print_unsigned(unsigned int num);
 char *convert_ui_to_str(unsigned int num);
+int print_S(char *str);
 
 #endif /* MAIN_H */
