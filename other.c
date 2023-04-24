@@ -13,10 +13,7 @@ int print_unsigned(unsigned int num)
 	str = convert_ui_to_str(num);
 	if (str == NULL)
 		return (-1);
-	else
-	{
-		return (print_str(str));
-	}
+	return (print_str(str));
 }
 
 /**
