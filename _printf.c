@@ -7,10 +7,6 @@
  * @...: arguments to be printed
  * Return: void
  */
-#define COUNTC do { \
-	(count) += (print_char((va_arg((args), (int))))); \
-	(break); \
-} while (0)
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -20,34 +16,25 @@ int _printf(const char *format, ...)
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-		{
 			count += print_char(format[i]);
-			continue;
-		}
-		switch (format[i + 1])
+		else
 		{
-		case 'c':
-			COUNTC;
-		case '%':
-			count += print_char('%');
-			break;
-		case 's':
-			count += print_str(va_arg(args, char *));
-			break;
-		case 'i':
-		case 'd':
-			count += print_int(va_arg(args, int));
-			break;
-		case 'u':
-			count += print_unsigned(va_arg(args, unsigned int));
-			break;
-		case 'b':
-			count += print_binary(va_arg(args, unsigned int));
-			break;
-		default:
-			return (-1);
+			if (format[i + 1] == 'c')
+				count += print_char(va_arg(args, int));
+			else if (format[i + 1] == '%')
+				count += print_char('%');
+			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
+				count += print_int(va_arg(args, int));
+			else if (format[i + 1] == 's')
+				count += print_str(va_arg(args, char *));
+			else if (format[i + 1] == 'u')
+				count += print_unsigned(va_arg(args, int));
+			else if (format[i + 1] == 'b')
+				count += print_binary(va_arg(args, int));
+			else
+				return (-1);
+			i++;
 		}
-		i++;
 	}
 	va_end(args);
 	return ((format) ? count : -1);
