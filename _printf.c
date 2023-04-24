@@ -7,9 +7,9 @@
  * @...: arguments to be printed
  * Return: void
  */
-#define COUNTC do { /
-	count += print_char(va_arg(args, int)); /
-	break; /
+#define COUNTC do { \
+	count += print_char(va_arg(args, int)); \
+	break; \
 } while (0)
 int _printf(const char *format, ...)
 {
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		switch (format[i + 1])
 		{
 		case 'c':
-			COUNTC
+			COUNTC;
 		case '%':
 			count += print_char('%');
 			break;
