@@ -6,7 +6,9 @@
  */
 int main(void)
 {
+#pragma region test -suite
 	int len, len1, len2, len_int;
+	unsigned int num3 = 4294967295, num4 = 987654321;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
@@ -43,8 +45,27 @@ int main(void)
 
 	_printf("Wrong: %c\n");
 	printf("Wrong: %c\n");
-	
+
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
+
+	_printf("Unsigned 1: %u\n", num3);
+	_printf("Unsigned 2: %u\n", num4);
+
+	_printf("Binary 1: %b\n", num3);
+	_printf("Binary 2: %b\n", num4);
+
+#pragma endregion test - suite
+
+	// printf("\n%u", (MAX_LEN_UNSIGNED - 6));
+	// _printf("%b", -1);
+
+	// write a test for conv_binary
+	// char s1[32];
+	// char *s2;
+
+	// s2 = conv_binary(10);
+	// printf("%s\n", s2);
+
 	return (0);
 }
