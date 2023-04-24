@@ -40,7 +40,13 @@ int print_int(int num)
 {
 	char *str;
 
-	str = convert_num_to_str(num);
+	if (num != -2147483648)
+	{
+		str = convert_num_to_str(num);
+	} else
+	{
+		str = "-2147483648";
+	}
 	/* catch any errors */
 	if (str == NULL)
 		return (-1);
