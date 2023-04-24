@@ -31,6 +31,8 @@ int _printf(const char *format, ...)
 				count += print_unsigned(va_arg(args, int));
 			else if (format[i + 1] == 'b')
 				count += print_binary(va_arg(args, int));
+			else if (format[i + 1] == 'S')
+				count += print_S(va_arg(args, char *));
 			else
 				return (-1);
 			i++;
