@@ -41,7 +41,11 @@ int print_int(int num)
 	char *str;
 
 	str = convert_num_to_str(num);
-	return (print_str(str));
+	/* catch any errors */
+	if (str == NULL)
+		return (-1);
+	else
+		return (print_str(str));
 }
 /**
  * convert_num_to_str - converts a number to a string
