@@ -5,7 +5,7 @@
  * @num: number to be printed
  * Return: number of characters printed
  */
-int print_unsigned(unsigned int num)
+int print_unsigned(int num)
 {
 	char *str;
 
@@ -20,10 +20,10 @@ int print_unsigned(unsigned int num)
  * @num: the number to be converted
  * Return: nothing
  */
-char *convert_ui_to_str(unsigned int num)
+char *convert_ui_to_str(int num)
 {
 	int i, rem, len = 0, a = 0;
-	unsigned int digits = num;
+	int digits = num;
 	char *str;
 
 	if (num != 0)
