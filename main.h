@@ -15,5 +15,5 @@ int print_binary(unsigned int num);
 int print_unsigned(unsigned int num);
 char *convert_ui_to_str(unsigned int num);
 int print_S(char *str);
-
+int print_pointer_address(void *p);
 #endif /* MAIN_H */

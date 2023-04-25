@@ -86,3 +86,8 @@ int print_S(char *str)
 	}
 	return (j + a);
 }
+int print_pointer_address(void *p)
+{
+	char str[40] = p;
+	return (print_str(str));
+}
