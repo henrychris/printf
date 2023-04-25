@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * print_unsigned - prints an unsigned int
@@ -58,7 +57,7 @@ char *convert_ui_to_str(unsigned int num)
 	return (str);
 }
 /**
- * print_str - prints a string to stdout
+ * print_S - prints a string to stdout
  * @str: the string to be printed
  * to be increased after printing a character
  * Return: void

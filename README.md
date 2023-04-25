@@ -17,4 +17,4 @@
 *Note:* You may need to change the include statement in test.c
 to the full file path of your main.h file
 ## Use this to compile
-``` gcc ./tests/test.c _printf.c binary.c basic.c -o test  ```
+``` gcc ./tests/test.c *.c -o test  ```

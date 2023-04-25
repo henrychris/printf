@@ -33,8 +33,10 @@ int _printf(const char *format, ...)
 				count += print_binary(va_arg(args, int));
 			else if (format[i + 1] == 'S')
 				count += print_S(va_arg(args, char *));
-			else if (format[i + 1] == 'p')
-				count += print_pointer_address(va_arg(args, void *));
+			else if (format[i + 1] == 'o')
+				count += print_octal(va_arg(args, int));
+			else if (format[i + 1] == 'x' || format[i + 1] == 'X')
+				count += print_hex(va_arg(args, int), format[i + 1]);
 			else
 				return (-1);
 			i++;
