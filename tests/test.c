@@ -55,6 +55,15 @@ int main(void)
 	_printf("Binary 1: %b\n", num3);
 	_printf("Binary 2: %b\n", num4);
 
+	_printf("Octal 1: %o\n", num3);
+	_printf("Octal 2: %o\n", num4);
+
+	_printf("Hex 1: %x\n", num3);
+	_printf("Hex 2: %x\n", num4);
+
+	_printf("HEX 1: %X\n", num3);
+	_printf("HEX 2: %X\n", num4);
+
 #pragma endregion test - suite
 	return (0);
 }

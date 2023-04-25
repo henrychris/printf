@@ -14,5 +14,12 @@ char *conv_binary(unsigned int num);
 int print_binary(unsigned int num);
 int print_unsigned(unsigned int num);
 char *convert_ui_to_str(unsigned int num);
+int print_octal(unsigned int num);
+char *conv_octal(unsigned int num);
+int print_hex(unsigned int num, char specifier);
+char *conv_hex(unsigned int num, int upper_case);
+char get_hex_char(int c, int upper_case);
+char to_upper(char c);
+int is_upper(char c);
 
 #endif /* MAIN_H */
