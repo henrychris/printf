@@ -25,8 +25,6 @@ int _printf(const char *format, ...)
 				count += print_char('%');
 			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 				count += print_int(va_arg(args, int));
-			else if (format[i + 1] == 's')
-				count += print_str(va_arg(args, char *));
 			else if (format[i + 1] == 'u')
 				count += print_unsigned(va_arg(args, int));
 			else if (format[i + 1] == 'b')
@@ -38,7 +36,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'x' || format[i + 1] == 'X')
 				count += print_hex(va_arg(args, int), format[i + 1]);
 			else
-				return (-1);
+				count += print_str(va_arg(args, char *));
 			i++;
 		}
 	}
