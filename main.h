@@ -22,5 +22,5 @@ char get_hex_char(int c, int upper_case);
 char to_upper(char c);
 int is_upper(char c);
 int print_S(char *str);
-int print_pointer_address(void *p);
+
 #endif /* MAIN_H */
