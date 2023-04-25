@@ -27,10 +27,8 @@ int main(void)
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 
-	len1 = _printf("Len:[%]\n", len);
-	printf("\n");
-	len2 = _printf("Len2:[%]\n", len2);
-	printf("\n");
+	len1 = _printf("Len:[%d]\n", len);
+	len2 = _printf("Len2:[%d]\n", len2);
 
 	len1 = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");

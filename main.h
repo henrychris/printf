@@ -8,6 +8,7 @@
 int _printf(const char *format, ...);
 int print_char(int c);
 int print_str(char *str);
+int get_str_print(char *str, char specifier);
 int print_int(int num);
 char *convert_num_to_str(int num);
 char *conv_binary(unsigned int num);
