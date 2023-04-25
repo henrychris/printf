@@ -35,6 +35,8 @@ int _printf(const char *format, ...)
 				count += print_octal(va_arg(args, int));
 			else if (format[i + 1] == 'x' || format[i + 1] == 'X')
 				count += print_hex(va_arg(args, int), format[i + 1]);
+			else if (!format[i + 1] || (format[i + 1] ==' ' && !format[i + 2])) 
+				return (-1);
 			else
 				count += print_str(va_arg(args, char *));
 			i++;
