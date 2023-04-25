@@ -8,8 +8,8 @@
  */
 int get_str_print(char *str, char specifier)
 {
-        if (specifier == 'S')
-                return (print_S(str));
-        else
-                return (print_str(str));
+	if (specifier == 'S')
+		return (print_S(str));
+	else
+		return (print_str(str));
 }

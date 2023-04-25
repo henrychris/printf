@@ -35,13 +35,13 @@ int _printf(const char *format, ...)
 				count += print_octal(va_arg(args, int));
 			else if (format[i + 1] == 'x' || format[i + 1] == 'X')
 				count += print_hex(va_arg(args, int), format[i + 1]);
-			else if (!format[i + 1] || (format[i + 1] == ' ' && !format[i + 2]))
-				return (-1);
-			else
+			else if (format[i + 1] != '%')
 			{
 				count += print_char('%');
 				count += print_char(format[i + 1]);
 			}
+			else if (!format[i + 1] || (format[i + 1] == ' ' && !format[i + 2]))
+				return (-1);
 			i++;
 		}
 	}
