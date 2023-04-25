@@ -76,9 +76,7 @@ int print_S(char *str)
 			print_char('x');
 			/* conv_to_hexadecimal */
 			/* print_it */
-			if (str[j] > 0 && str[j] < 16)
-				print_char(0 + '0');
-			print_hex(va_arg(args, int), format[i + 1]);
+			print_hex(str[j], 'A');
 			a += 4;
 		} else
 		{
