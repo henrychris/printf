@@ -43,8 +43,8 @@ int main(void)
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
 
-	_printf("Wrong: %c\n");
-	printf("Wrong: %c\n");
+	_printf("Wrong: %c\n", 'A');
+	printf("Wrong: %c\n", 'A');
 
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
