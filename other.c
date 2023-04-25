@@ -2,7 +2,7 @@
 
 /**
  * print_unsgn - prints an unsigned int
- * @args: the unsigned int to be printed
+ * @num: the unsigned int to be printed
  * Return: number of characters printed
  */
 int print_unsgn(unsigned int num)
