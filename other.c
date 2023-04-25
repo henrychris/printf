@@ -2,10 +2,10 @@
 
 /**
  * print_unsigned - prints an unsigned int
- * @num: number to be printed
+ * @args: the unsigned int to be printed
  * Return: number of characters printed
  */
-int print_unsigned(va_list args)
+int print_unsgn(va_list args)
 {
 	char *str;
 	unsigned int num = va_arg(args, unsigned int);
