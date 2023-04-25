@@ -12,11 +12,11 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0, i;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		if (!format)
-			return (-1);
 		if (format[i] != '%')
 			count += print_char(format[i]);
 		else
@@ -48,5 +48,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	return ((format) ? count : -1);
+	return (count);
 }
