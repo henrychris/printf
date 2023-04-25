@@ -4,7 +4,6 @@
  * _printf - prints anything
  * @format: list of types of arguments
  * passed to the function
- * @...: arguments to be printed
  * Return: void
  */
 int _printf(const char *format, ...)
