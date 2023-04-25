@@ -5,7 +5,7 @@
  * @num: number
  * Return: binary num as string
  */
-char *conv_binary(unsigned int num)
+char *conv_binary(int num)
 {
 	int i = 0, j = 0;
 	char *bstr, rev_bstr[32];
@@ -43,7 +43,7 @@ char *conv_binary(unsigned int num)
  * @num: number
  * Return: num of chars printed
  */
-int print_binary(unsigned int num)
+int print_binary(int num)
 {
 	char *s2;
 
