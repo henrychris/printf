@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 				count += print_int(va_arg(args, int));
 			else if (format[i + 1] == 'u')
-				count += print_unsigned(va_arg(args, int));
+				count += print_unsigned(va_arg(args, unsigned int));
 			else if (format[i + 1] == 'b')
 				count += print_binary(va_arg(args, int));
 			else if (format[i + 1] == 'S' || format[i + 1] == 's')
