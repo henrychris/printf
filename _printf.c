@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 				count += print_char('%');
 				count += print_char(format[i + 1]);
 			}
-			else if (!format[i + 1] || (format[i + 1] == ' ' && !format[i + 2]))
+			else if (!format[i] || !format[i + 1] || (format[i + 1] == ' ' && !format[i + 2]))
 				return (-1);
 			i++;
 		}
