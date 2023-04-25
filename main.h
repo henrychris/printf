@@ -13,7 +13,7 @@ int print_int(int num);
 char *convert_num_to_str(int num);
 char *conv_binary(unsigned int num);
 int print_binary(unsigned int num);
-int print_unsigned(unsigned int num);
+int print_unsigned(va_list args);
 char *convert_ui_to_str(unsigned int num);
 int print_octal(unsigned int num);
 char *conv_octal(unsigned int num);

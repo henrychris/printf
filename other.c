@@ -5,9 +5,10 @@
  * @num: number to be printed
  * Return: number of characters printed
  */
-int print_unsigned(unsigned int num)
+int print_unsigned(va_list args)
 {
 	char *str;
+	unsigned int num = va_arg(args, unsigned int);
 
 	str = convert_ui_to_str(num);
 	if (str == NULL)
