@@ -16,10 +16,7 @@ int print_hex(unsigned int num, char specifer)
 
 	if (str == NULL)
 		return (-1);
-	else
-	{
-		return (print_str(str));
-	}
+	return (print_str(str));
 }
 
 /**
