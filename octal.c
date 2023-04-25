@@ -12,10 +12,7 @@ int print_octal(unsigned int num)
 	str = conv_octal(num);
 	if (str == NULL)
 		return (-1);
-	else
-	{
-		return (print_str(str));
-	}
+	return (print_str(str));
 }
 
 /**
@@ -38,7 +35,7 @@ char *conv_octal(unsigned int num)
 	str = malloc((digits + 1) * sizeof(char));
 	if (str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	for (i = 0; i < digits; i++)
