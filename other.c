@@ -1,13 +1,14 @@
 #include "main.h"
 
 /**
- * print_unsigned - prints an unsigned int
- * @num: number to be printed
+ * print_unsgn - prints an unsigned int
+ * @args: the unsigned int to be printed
  * Return: number of characters printed
  */
-int print_unsigned(unsigned int num)
+int print_unsgn(va_list args)
 {
 	char *str;
+	unsigned int num = va_arg(args, unsigned int);
 
 	str = convert_ui_to_str(num);
 	if (str == NULL)
