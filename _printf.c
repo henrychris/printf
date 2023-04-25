@@ -16,42 +16,31 @@ int _printf(const char *format, ...)
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-		{
 			count += print_char(format[i]);
-			continue;
-		}
-		switch (format[i + 1])
+		else
 		{
-		case 'c':
-			count += print_char(va_arg(args, int));
-			break;
-		case '%':
-			count += print_char('%');
-			break;
-		case 's':
-			count += print_str(va_arg(args, char *));
-			break;
-		case 'i':
-		case 'd':
-			count += print_int(va_arg(args, int));
-			break;
-		case 'u':
-			count += print_unsigned(va_arg(args, unsigned int));
-			break;
-		case 'b':
-			count += print_binary(va_arg(args, unsigned int));
-			break;
-		case 'o':
-			count += print_octal(va_arg(args, unsigned int));
-			break;
-		case 'x':
-		case 'X':
-			count += print_hex(va_arg(args, unsigned int), format[i + 1]);
-			break;
-		default:
-			return (-1);
+			if (format[i + 1] == 'c')
+				count += print_char(va_arg(args, int));
+			else if (format[i + 1] == '%')
+				count += print_char('%');
+			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
+				count += print_int(va_arg(args, int));
+			else if (format[i + 1] == 's')
+				count += print_str(va_arg(args, char *));
+			else if (format[i + 1] == 'u')
+				count += print_unsigned(va_arg(args, int));
+			else if (format[i + 1] == 'b')
+				count += print_binary(va_arg(args, int));
+			else if (format[i + 1] == 'S')
+				count += print_S(va_arg(args, char *));
+			else if (format[i + 1] == 'o')
+				count += print_octal(va_arg(args, int));
+			else if (format[i + 1] == 'x' || format[i + 1] == 'X')
+				count += print_hex(va_arg(args, int), format[i + 1]);
+			else
+				return (-1);
+			i++;
 		}
-		i++;
 	}
 	va_end(args);
 	return ((format) ? count : -1);

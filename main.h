@@ -21,5 +21,6 @@ char *conv_hex(unsigned int num, int upper_case);
 char get_hex_char(int c, int upper_case);
 char to_upper(char c);
 int is_upper(char c);
+int print_S(char *str);
 
 #endif /* MAIN_H */

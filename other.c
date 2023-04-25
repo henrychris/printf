@@ -12,10 +12,7 @@ int print_unsigned(unsigned int num)
 	str = convert_ui_to_str(num);
 	if (str == NULL)
 		return (-1);
-	else
-	{
-		return (print_str(str));
-	}
+	return (print_str(str));
 }
 
 /**
@@ -58,4 +55,33 @@ char *convert_ui_to_str(unsigned int num)
 		str[1] = '\0';
 	}
 	return (str);
+}
+/**
+ * print_str - prints a string to stdout
+ * @str: the string to be printed
+ * to be increased after printing a character
+ * Return: void
+ */
+int print_S(char *str)
+{
+	int j = 0, a = 0;
+
+	if (str == NULL)
+		str = "(null)";
+	while (str[j] != '\0')
+	{
+		if ((str[j] > 0 && str[j] < 32) || str[j] >= 127)
+		{
+			print_char(92);
+			print_char('x');
+			/* conv_to_hexadecimal */
+			/* print_it */
+			a += 4;
+		} else
+		{
+			print_char(str[j]);
+			j++;
+		}
+	}
+	return (j + a);
 }
