@@ -11,6 +11,8 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0, i;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
@@ -25,7 +27,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'i' || format[i + 1] == 'd')
 				count += print_int(va_arg(args, int));
 			else if (format[i + 1] == 'u')
-				count += print_unsgn(args);
+				count += print_unsgn(va_arg(args, unsigned int));
 			else if (format[i + 1] == 'b')
 				count += print_binary(va_arg(args, int));
 			else if (format[i + 1] == 'S' || format[i + 1] == 's')
@@ -45,5 +47,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	return ((format) ? count : -1);
+	return (count);
 }

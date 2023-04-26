@@ -9,6 +9,7 @@ int main(void)
 #pragma region test -suite
 	int len, len1, len2, len_int;
 	unsigned int num3 = 4294967295, num4 = 987654321;
+	unsigned int ui = (unsigned int)INT_MAX + 1024;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
@@ -18,6 +19,9 @@ int main(void)
 
 	_printf("C%%%c\n", 'a');
 	printf("C%%%c\n", 'a');
+
+	_printf("Negative:[%d]\n", -762534);
+	printf("Negative:[%d]\n", -762534);
 
 	len = _printf("Character:[%s]\n", "Him");
 	len2 = printf("Character:[%s]\n", "Him");
@@ -47,20 +51,29 @@ int main(void)
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
 
-	_printf("Unsigned 1: %u\n", num3);
-	_printf("Unsigned 2: %u\n", num4);
+	_printf("Unsigned 1: %u %u %u\n", num3, num4, num4);
+	printf("Unsigned 2: %u %u\n", num3, num4);
 
 	_printf("Binary 1: %b\n", num3);
 	_printf("Binary 2: %b\n", num4);
 
-	_printf("Octal 1: %o\n", num3);
-	_printf("Octal 2: %o\n", num4);
+	_printf("Octal 1: %o %o\n", num3, num4);
+	printf("Octal 2: %o %o\n", num3, num4);
 
-	_printf("Hex 1: %x\n", num3);
-	_printf("Hex 2: %x\n", num4);
+	_printf("Hex 1: %x %x\n", num3, num4);
+	printf("Hex 2: %x %x\n", num3, num4);
 
-	_printf("HEX 1: %X\n", num3);
-	_printf("HEX 2: %X\n", num4);
+	_printf("HEX 1: %X %X\n", num3, num4);
+	printf("HEX 2: %X %X\n", num3, num4);
+
+	_printf("Unsigned:[%u]\n", ui);
+	printf("Unsigned:[%u]\n", ui);
+
+	_printf("Unsigned octal:[%o]\n", ui);
+	printf("Unsigned octal:[%o]\n", ui);
+
+	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 
 #pragma endregion test - suite
 	return (0);
