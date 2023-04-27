@@ -77,7 +77,8 @@ int print_S(char *str)
 			if (str[j] > 0 && str[j] < 16)
 				print_char(0 + '0');
 			print_hex(str[j], 'A');
-			a += 4;
+			a += 3;
+			j++;
 		} else
 		{
 			print_char(str[j]);
