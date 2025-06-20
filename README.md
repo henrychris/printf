@@ -17,7 +17,9 @@ This project is a custom implementation of the `printf` function in C, which is 
 - [Examples](#examples)
 - [Testing](#testing)
 - [Contributing](#contributing)
+- [Authors](#authors)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 ## Features
 
