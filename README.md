@@ -2,6 +2,7 @@
 
 ![C Language](https://img.shields.io/badge/Language-C-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+[![Documentation Status](https://readthedocs.org/projects/printf/badge/?version=latest)](https://printf.readthedocs.io/en/latest/?badge=latest)
 
 ## Description
 
